@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Stage 5 - Checkout Source Code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run CI checks
-        run: echo "CI pipeline is running successfully"
+      # Stage 6 - Dependency Installation
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Linting
-        run: echo "Linting completed successfully"
-
-      - name: Unit Tests
-        run: echo "Unit tests passed successfully"
-
-      - name: Build Check
-        run: echo "Build completed successfully"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
