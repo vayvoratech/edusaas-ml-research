@@ -35,3 +35,15 @@ jobs:
       # Stage 8 - Compile / Build Check
       - name: Compile Python files
         run: python -m compileall .
+
+      # Stage 9 - Unit Testing
+      - name: Run Unit Tests
+        run: |
+          pip install pytest
+          pytest -v
+
+      # Stage 10 - Security & Vulnerability Scan
+      - name: Security Scan
+        run: |
+          pip install pip-audit
+          pip-audit
